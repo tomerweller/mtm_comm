@@ -1,26 +1,4 @@
-/**
- * @example TCPServer.ino
- * @brief The TCPServer demo of library WeeESP8266. 
- * @author Wu Pengfei<pengfei.wu@itead.cc> 
- * @date 2015.02
- * 
- * @par Copyright:
- * Copyright (c) 2015 ITEAD Intelligent Systems Co., Ltd. \n\n
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version. \n\n
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
 #include "ESP8266.h"
-#include <AStar32U4Prime.h>
 #include <SoftwareSerial.h>
 
 #define SSID        "Viral"
@@ -31,20 +9,12 @@ SoftwareSerial sSerial(8, 9);
 
 void setup(void)
 {
-    ledYellow(1);
     Serial.begin(9600);
     sSerial.begin(9600);
     Serial.print("setup begin\r\n");
     Serial.print("FW Version:");
     Serial.println(wifi.getVersion().c_str());
       
-    if (wifi.setOprToStationSoftAP()) {
-        Serial.print("to station + softap ok\r\n");
-    } else {
-        Serial.print("to station + softap err\r\n");
-        return;
-    }
- 
     if (wifi.joinAP(SSID, PASSWORD)) {
         Serial.print("Join AP success\r\n");
         Serial.print("IP: ");
